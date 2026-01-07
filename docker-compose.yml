@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:18
+    container_name: auth-postgres-perf
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: auth_demo
+    ports:
+      - "5438:5432"
+    volumes:
+      - postgres_perf_data_v2:/var/lib/postgresql
+
+  redis:
+    image: redis:alpine
+    container_name: auth-redis-perf
+    ports:
+      - "6388:6379"
+
+volumes:
+  postgres_perf_data_v2:
